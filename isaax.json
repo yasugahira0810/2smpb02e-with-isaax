@@ -6,6 +6,6 @@
 	"license": "MIT Lisence",
 	"language": "Python",
 	"scripts": {
-		"start": "python3 -u sample_2smpb_02e.py"
+		"start": "python3 -u flask_app.py"
 	}
 }
