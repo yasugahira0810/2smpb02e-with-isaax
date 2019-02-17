@@ -19,6 +19,7 @@ while True:
     press, temp = sensor.readData()
     if press is not None:
 
+        if true:
             am.send({
                 'created': data.tick_last_update.strftime('%Y-%m-%d %H:%M:%S'),
                 'd1': press,
