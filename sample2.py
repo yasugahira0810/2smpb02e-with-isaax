@@ -17,9 +17,9 @@ am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 latest_update = datetime.datetime.now()
 while True:
     press, temp = sensor.readData()
-    if data is not None:
+    if press is not None:
 
-        if data.tick_last_update > latest_update:
+        if press.tick_last_update > latest_update:
             am.send({
                 'created': data.tick_last_update.strftime('%Y-%m-%d %H:%M:%S'),
                 'd1': press,
