@@ -26,7 +26,7 @@ app = Flask(__name__)
 def cpu():
     press, temp = sensor.readData()
    #return jsonify(temperature=1, pressure=1)
-    return jsonify(temperature='AMBIENT_CHANNEL_ID', pressure='AMBIENT_WRITE_KEY')
+    return jsonify(temperature=AMBIENT_CHANNEL_ID, pressure=AMBIENT_WRITE_KEY)
    #return jsonify(temperature=round(temp,2), pressure=round(press,2))
 
 @app.route('/')
@@ -38,5 +38,5 @@ def home():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', threaded=True)
 
-am = ambient.Ambient('AMBIENT_CHANNEL_ID', 'AMBIENT_WRITE_KEY')
+am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 r = am.send({'d1': 1, 'd2': 3})
