@@ -21,10 +21,8 @@ while True:
 
         if press is not None:
             am.send({
-                'created': data.tick_last_update.strftime('%Y-%m-%d %H:%M:%S'),
                 'd1': press,
                 }
             )
-        latest_update = data.tick_last_update
 
     time.sleep(CHECK_SPAN)
