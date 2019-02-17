@@ -22,7 +22,6 @@ while True:
         if press is not None:
             am.send({
                 'd1': press,
-                'd2': temp,
                 }
             )
 
