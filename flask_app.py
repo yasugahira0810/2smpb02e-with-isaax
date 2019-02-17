@@ -8,8 +8,12 @@ import datetime
 from flask import Flask
 from flask import render_template
 from flask import jsonify
+import ambient
 
 import grove_2smpb_02e
+
+AMBIENT_CHANNEL_ID = int(os.environ['AMBIENT_CHANNEL_ID'])
+AMBIENT_WRITE_KEY = os.environ['AMBIENT_WRITE_KEY']
 
 sensor = grove_2smpb_02e.Grove2smpd02e()
 app = Flask(__name__)
@@ -30,4 +34,5 @@ def home():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', threaded=True)
 
-
+am = ambient.Ambient('AMBIENT_CHANNEL_ID', 'AMBIENT_WRITE_KEY')
+r = am.send({'d1': 1, 'd2': 3})
