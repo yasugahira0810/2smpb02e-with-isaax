@@ -3,12 +3,13 @@
 
 from __future__ import print_function
 
+import ambient
+
 import time
 import datetime
 from flask import Flask
 from flask import render_template
 from flask import jsonify
-import ambient
 
 import grove_2smpb_02e
 
