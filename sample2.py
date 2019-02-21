@@ -11,19 +11,16 @@ CHECK_SPAN = int(os.environ.get('CHECK_SPAN', '30'))
 
 sensor = grove_2smpb_02e.Grove2smpd02e()
 
-
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 
 latest_update = datetime.datetime.now()
 while True:
     press, temp = sensor.readData()
-    if press is not None:
-
-        if press is not None:
-            am.send({
-                'd1': press,
-                'd2': temp,
-                }
-            )
+    if press is not None and temp is not None:
+        am.send({
+            'd1': press,
+            'd2': temp,
+            }
+        )
 
     time.sleep(CHECK_SPAN)
