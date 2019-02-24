@@ -20,7 +20,7 @@ app = Flask(__name__)
 def cpu():
     d = am.read
    #return jsonify(temperature=1, pressure=1)
-    return jsonify(temperature=round(d,2)
+    return jsonify(temperature=round(d,2))
 
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 
