@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import ambient
 import os
 import sys
@@ -21,6 +23,11 @@ def cpu():
     d = am.read
    #return jsonify(temperature=1, pressure=1)
     return jsonify(temperature=round(d,2))
+
+@app.route('/')
+def home():
+   s = datetime.datetime.now().strftime("%s")
+   return render_template('index.html', timestamp=s)
 
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 
