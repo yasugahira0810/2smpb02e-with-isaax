@@ -35,4 +35,14 @@ while True:
             }
         )
 
+        @app.route('/sensor')
+        def cpu():
+            press, temp = sensor.readData()
+            return jsonify(temperature=round(temp,2), pressure=round(press,2))
+
+        @app.route('/')
+        def home():
+            s = datetime.datetime.now().strftime("%s")
+            return render_template('index.html', timestamp=s)
+
     time.sleep(CHECK_SPAN)
