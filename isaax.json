@@ -6,6 +6,6 @@
 	"license": "MIT Lisence",
 	"language": "Python",
 	"scripts": {
-		"start": "python -u sample_2smpb_02e.py"
+		"start": "python -u sample2.py"
 	}
 }
