@@ -16,16 +16,17 @@ AMBIENT_WRITE_KEY = os.environ['AMBIENT_WRITE_KEY']
 CHECK_SPAN = int(os.environ.get('CHECK_SPAN', '30'))
 
 sensor = grove_2smpb_02e.Grove2smpd02e()
+app = Flask(__name__)
 
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
-print("test2")
+
 latest_update = datetime.datetime.now()
 while True:
     press, temp = sensor.readData()
     if press is not None and temp is not None:
-        print("test"
-            #datetime.datetime.today().strftime("[%Y/%m/%d %H:%M:%S]"),
-            #"pressure=%.2f[hPa] temperature=%.1f[c]" %(press,temp)
+        print(
+            datetime.datetime.today().strftime("[%Y/%m/%d %H:%M:%S]"),
+            "pressure=%.2f[hPa] temperature=%.1f[c]" %(press,temp)
         )
         am.send(
             {
@@ -33,5 +34,7 @@ while True:
                 'd2': temp,
             }
         )
+        d = am.read(n=5)
+        print(d)
         
     time.sleep(CHECK_SPAN)
