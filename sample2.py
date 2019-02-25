@@ -16,10 +16,9 @@ AMBIENT_WRITE_KEY = os.environ['AMBIENT_WRITE_KEY']
 CHECK_SPAN = int(os.environ.get('CHECK_SPAN', '30'))
 
 sensor = grove_2smpb_02e.Grove2smpd02e()
-app = Flask(__name__)
 
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
-
+print("test2")
 latest_update = datetime.datetime.now()
 while True:
     press, temp = sensor.readData()
