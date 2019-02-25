@@ -18,17 +18,6 @@ CHECK_SPAN = int(os.environ.get('CHECK_SPAN', '30'))
 sensor = grove_2smpb_02e.Grove2smpd02e()
 app = Flask(__name__)
 
-@app.route('/sensor')
-def cpu():
-    press, temp = sensor.readData()
-    return jsonify(temperature=1, pressure=1)
-   #  return jsonify(temperature=round(temp,2), pressure=round(press,2))
-
-@app.route('/')
-def home():
-   s = datetime.datetime.now().strftime("%s")
-   return render_template('index.html', timestamp=s)
-
 am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY)
 
 latest_update = datetime.datetime.now()
