@@ -25,17 +25,17 @@ latest_update = datetime.datetime.now()
 while True:
     press, temp = sensor.readData()
     if press is not None and temp is not None:
-        #print(
-        #    datetime.datetime.today().strftime("[%Y/%m/%d %H:%M:%S]"),
-        #    "pressure=%.2f[hPa] temperature=%.1f[c]" %(press,temp)
-        #)
+        print(
+            datetime.datetime.today().strftime("[%Y/%m/%d %H:%M:%S]"),
+            "pressure=%.2f[hPa] temperature=%.1f[c]" %(press,temp)
+        )
         am.send(
             {
                 'd1': press,
                 'd2': temp,
             }
         )
-        d = am.read(n=5)
+        d = am.read(n=1)
         print(d)
         
     time.sleep(CHECK_SPAN)
